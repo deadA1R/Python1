@@ -1,0 +1,77 @@
+{% extends 'base_sign.html' %}
+
+ {% block main %}
+  <section class="min-vh-100 mb-6">
+    <div class="page-header align-items-start min-vh-24 pt-5 pb-11 m-3 border-radius-lg" style="background-image: url( {{url_for('static', filename='img/vr-bg.jpg') }})">
+      <span class="mask bg-gradient-dark opacity-6"></span>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-5 text-center mx-auto">
+            <h1 class="text-white mb-2 mt-5">Welcome!</h1>
+            <p class="text-lead text-white">Use these awesome forms to login or create new account in your project for free.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row mt-lg-n20 mt-md-n11 mt-n0">
+        <div class="col-xl-6 col-lg-5 col-md-4 mx-auto">
+          <div class="card z-index-0">
+            <div class="card-header text-center pt-4">
+              <h3>Register form</h3>
+            </div>
+            <div class="row px-xl-5 px-sm-4 px-3">
+              <div class="card-body">
+                <form action="{{ url_for('register')}}" method="POST" enctype="multipart/form-data">
+                  <label>Username</label>  
+                  <div class="mb-3">
+                      <input type="text" class="form-control" name="username" placeholder="Username" required>
+                    </div> 
+                    <label>First Name</label>  
+                    <div class="mb-3">
+                      <input type="text"  class="form-control" name="fname" placeholder="First Name" required>
+                    </div> 
+                    <label>Last Name</label> 
+                    <div class="mb-3">
+                      <input type="text"  class="form-control" name="sname" placeholder="Second Name" required>
+                    </div> 
+                    <label> Password </label> 
+                    <div class="mb-3">
+                      <input type="password"  class="form-control" name="password" placeholder="Password" required>
+                    </div> 
+                    <label>Confirm Password</label> 
+                    <div class="mb-3">
+                      <input type="password"  class="form-control" name="password_conf" placeholder="Password Confirmation" required>
+                    </div> 
+                    <label>Email</label> 
+                    <div class="mb-3">
+                      <input type="text"  class="form-control" name="email" placeholder="Email" required>
+                    </div>
+                    <label>Mobile</label> 
+                    <div class="mb-3">
+                      <input type="text"  class="form-control" name="mobile" placeholder="+7 777 777 77 77" required>
+                    </div>
+                    <label>Data of birth</label> 
+                    <div class="mb-3">
+                      <input type="text"  class="form-control" name="d_of_b" placeholder="12/31/1990" required>
+                    </div>
+                    <label>Location</label> 
+                    <div class="mb-3">
+                      <input type="text"  class="form-control" name="loc" placeholder="Country" required>
+                    </div>
+                    <label>Info about you</label>
+                    <div class="mb-3">
+                      <textarea type="text"  class="form-control" name="info" placeholder="Enter info about you" style="resize: none; height: 200px"></textarea>
+                    </div>
+                    <div class="mb-3">
+                      <input type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2" value="Sign UP">
+                    </div> 
+                 </form> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section>
+{% endblock %}

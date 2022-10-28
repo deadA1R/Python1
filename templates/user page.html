@@ -1,0 +1,129 @@
+<!-- INHERITING CONTENT FROM EXISTING FILE BASE.HTML -->
+{% extends "base.html"%} 
+
+
+{% block active_prof %}
+  active
+{% endblock %}
+
+{% block name_page_1 %}
+  Profile
+{% endblock %}
+
+{% block name_page_2 %}
+  Profile - {{ session.username }}
+{% endblock %}
+
+
+<!-- PUTTING DATA IN BLOCK(S) PREDEFINED IN BASE.HTML -->
+{%block main%}
+
+<div class="container-fluid">
+  <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url({{url_for('static', filename='img/curved-images/curved0.jpg') }})">
+    <span class="mask bg-gradient-primary opacity-6"></span>
+  </div>
+  <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
+    <div class="row gx-4">
+      <div class="col-auto">
+        <div class="avatar avatar-xl position-relative">
+          <img src="{{url_for('static', filename='img/bruce-mars.jpg') }}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+        </div>
+      </div>
+      <div class="col-auto my-auto">
+        <div class="h-100">
+          {% if context %}
+          <h5 class="mb-1">
+            {{ context.user_fname }} {{ context.user_sname }}
+          </h5>
+          {% endif %}
+          <p class="mb-0 font-weight-bold text-sm">
+          {% if context %}
+          
+          {% else %}
+            CEO / Co-Founder
+          {% endif %}
+          </p>
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+<div class="container-fluid py-4">
+  <div class="row">
+    
+    <div class="col-12 col-xl-4">
+      <div class="card h-100">
+        <div class="card-header pb-0 p-3">
+          <div class="row">
+            <div class="col-md-8 d-flex align-items-center">
+              <h6 class="mb-0">Profile Information</h6>
+            </div>
+            
+          </div>
+        </div>
+        <div class="card-body p-3">
+          <p class="text-sm">
+           {{ context.info}}
+          </p>
+          <hr class="horizontal gray-light my-4">
+          <ul class="list-group">
+            <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; {{ context.user_fname }} {{ context.user_sname }}</li>
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; {{ context.mobile }}</li>
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; {{ context.email }}</li>
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; {{ context.loc }}</li>
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Date of Birth:</strong> &nbsp; {{ context.d_of_b }}</li>
+            <li class="list-group-item border-0 ps-0 pb-0">
+              <strong class="text-dark text-sm">Social:</strong> &nbsp;
+              <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="#">
+                <i class="fab fa-facebook fa-lg"></i>
+              </a>
+              <a class="btn btn-twitter btn-simple mb-0 ps-1 pe-2 py-0" href="#">
+                <i class="fab fa-twitter fa-lg"></i>
+              </a>
+              <a class="btn btn-instagram btn-simple mb-0 ps-1 pe-2 py-0" href="#">
+                <i class="fab fa-instagram fa-lg"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-xl-8">
+      <div class="card h-100">
+        <div class="card-header pb-0 p-3">
+          <div class="row">
+            <div class="col-md-8 d-flex align-items-center">
+              <h6 class="mb-0">My Projects</h6>
+            </div> 
+          </div>
+        </div>
+        <div class="card-header pb-0 p-3">
+          <div class="row">
+            <div class="col-md-8 d-flex align-items-center">
+              <a href="{{url_for('add')}}" class="mb-0">Add project</a>
+            </div> 
+          </div>
+        </div>
+        <div class="card-body p-3">
+          <hr class="horizontal gray-light my-4">
+          {% if context.user_pr%}
+                  {% for project in context.user_pr%}  
+                
+                    <li>Title: {{project.title}} | Info: {{project.text_about}} | ID: {{project.pr_author}}</li>
+                
+                  {% endfor %}
+                {% else %}
+                <i>No project </i> (╯︵╰,)
+                {% endif %}
+        </div>
+      </div>
+    </div>
+    
+</div>
+</div>
+
+
+{% endblock %}
